@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0"
+  },
+  "scripts": {
+    "nodemon": "script.js"
+  }
+}

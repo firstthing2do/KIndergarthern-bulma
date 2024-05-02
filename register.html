@@ -1,0 +1,192 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindergarathen</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="style/style1.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<section class="section">
+    <h1 class="title is-4 has-text-centered">REGISTER YOUR CHILD IN THE BEST KINDERGARTEN IN TOWN</h1>
+    <div class="box is-2">
+      <form action="" method="post" id="myForm" onsubmit="return validateForm()">
+        <div class="content">
+            <fieldset>
+                <legend>Child info</legend>
+            <div class="field is-small">
+                <label class="label">Names</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Text input" id="child-name" name="child-name">
+                </div>
+            </div>
+            <div class="field is-small">
+                <label class="label">Age</label>
+                <div class="control">
+                  <input class="input" type="date" placeholder="Ex:..1-3 years old" id="child-age" name="child-age">
+                </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" id="boy" name="question" name="boy">
+                  Boy
+                </label>
+                <label class="radio">
+                  <input type="radio" id="girl" name="question" name="girl">
+                  Girl
+                </label>
+              </div>
+            </div>
+            <div class="field is-small">
+                <label class="label">Home Location</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Ex:..Gatsata" id="child-location" name="child-home">
+                </div>
+            </div>
+              </fieldset>
+              <fieldset>
+                <legend>Parental info</legend>
+               
+                <div class="field">
+                  <label class="label">Subject</label>
+                  <div class="control">
+                    <div class="select">
+                      <select>
+                        <option>Select Parenthood</option>
+                        <option>Father</option>
+                        <option>Mother</option>
+                        <option>Gurdian</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">Names</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="Text input" id="parent-name" name="parent-name">
+                  </div>
+              </div>
+              <div class="field">
+                <label class="label">Telephone</label>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="field has-addons">
+                      <p class="control">
+                        <a class="button is-static">
+                          +250
+                        </a>
+                      </p>
+                      <p class="control is-expanded">
+                        <input class="input" type="tel" id="parent-phone" placeholder="Your phone number" name="parent-phone">
+                        <span id="telephoneError" style="color: red;"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Your Email</label>
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" id="parent-email" placeholder="Email" name="parent-email">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  </p>
+                  </div>
+                 <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox" name="check" id="check">
+                    I agree to the Above shared information
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+              
+              <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                  <button class="button is-link" type="submit" value="submit">Submit</button>
+                </div>
+                <div class="control">
+                  <a class="button is-link is-light" href="index.html">Cancel</a>
+                </div>
+              </div>
+        </div>
+      </form>
+    </div>
+</section>
+<script>
+function validateForm() {
+  var childName = document.getElementById("child-name").value;
+  var childAge = document.getElementById("child-age").value;
+  var childGenderBoy = document.getElementById("boy").checked;
+  var childGenderGirl = document.getElementById("girl").checked;
+  var childLocation = document.getElementById("child-location").value;
+  var parentName = document.getElementById("parent-name").value;
+  var parentPhone = document.getElementById("parent-phone").value;
+  var parentEmail = document.getElementById("parent-email").value;
+  var check = document.getElementById("check").checked;
+  
+  if (childName == "") {
+      alert("Please enter child's name");
+      return false;
+  }
+  
+  // if (isNaN(childAge) || childAge == "") {
+  //     alert("Please enter a valid age");
+  //     return false;
+  // }
+  
+  if (!childGenderBoy && !childGenderGirl) {
+      alert("Please select child's gender");
+      return false;
+  }
+  
+  if (childLocation == "") {
+      alert("Please enter child's home location");
+      return false;
+  }
+  
+  if (parentName == "") {
+      alert("Please enter parent's name");
+      return false;
+  }
+  
+  var telephoneError = document.getElementById("telephoneError");
+    
+    // Regular expression pattern for telephone number validation
+    var telephonePattern = /^\d{9}$/;
+    
+    // Check if the telephone number matches the pattern
+    if (!telephonePattern.test(parentPhone)) {
+        telephoneError.textContent = "Please enter a valid 9-digit telephone number";
+        return false;
+    } else {
+        telephoneError.textContent = "";
+    }
+    
+    return true;
+
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    // Check if the email matches the pattern
+    if (!emailPattern.test(parentEmail)) {
+        alert("Please enter a valid email address");
+        return false;
+    }
+    
+    return true;
+
+  if (!check) {
+      alert("Please check the checkbox");
+      return false;
+  }
+  
+  return true;
+}
+</script>
+</body>
+</html>
